@@ -1,7 +1,31 @@
 # Java Can Be Palindrome
+Write a method named **_canMakePalindrome_** that accepts a string parameter and returns true
+if you can make that string into a palindrome by deleting at most 1 character, or false
+if that is not possible.
 
+For this problem, a palindrome is defined as a string that contains exactly the same sequence
+of characters forwards as backwards. For example, "madam" and "abba" and "racecar" are palindromes.
 
+The empty string and all one-character strings are also palindromes by our definition.
 
+If a string that is already a palindrome is passed, you should return true,
+such as the call of canMakePalindrome("racecar"). You should also return true if the string would be a palindrome after the removal of a single character, such as "raycecar" (remove the 'y') or "abxa" (remove the 'x').
+## References
+* [Can Make Palindrome](https://codestepbystep.com/problem/view/java/strings/CaesarCipher)
+* [add JUnit 5 to existing IntelliJ project](https://www.jetbrains.com/help/idea/junit.html#intellij)
+## Tools Used
+
+| Tool     |  Version |
+|:---------|---------:|
+| Java     | 22.0.2.0 |
+| JUnit    |   5.11.0 |
+| IntelliJ | 2024.2.1 |
+
+## Change History
+
+| Date       | Description                                                                       |
+|:-----------|:----------------------------------------------------------------------------------|
+| 2024-09-22 | Initial creation                                                                  |
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
