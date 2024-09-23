@@ -64,16 +64,20 @@ canMakePalindrome("xyz")
 →
 true
 (expected false)
+
 canMakePalindrome("xy")
 →
 true
+
 canMakePalindrome("banana")
 →
 false
 (expected true)
+
 canMakePalindrome("z")
 →
 true
+
 canMakePalindrome("")
 →
 true
