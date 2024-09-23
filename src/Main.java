@@ -1,5 +1,6 @@
 import java.util.Dictionary;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Hashtable;
 
 public class Main {
@@ -8,19 +9,40 @@ public class Main {
         System.out.format("Java version: %s%n", getJavaVersion());
         System.out.format("JUnit version: %s%n", getJUnitVersion());
 
-/*
-        word = "lsevels"; // should be true
-        isPalindrome = canMakePalindrome(word);
-        System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
-
-        word = "rotrator"; // should be true
-        isPalindrome = canMakePalindrome(word);
-        System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
-
- */
     }
 
-    public static boolean canMakePalindrome(String word) {
+    public static boolean canMakePalindromeStillDoesNotWork(String s) {
+        int numDeletions = 0;
+        for (int i = 0; i < s.length() / 2; i++) {
+            if(s.charAt(i) != s.charAt(s.length() - i - 1)) {
+                numDeletions++;
+            }
+        }
+        return numDeletions <= 1;
+    }
+
+    public static boolean canMakePalindromeDoesNotWork(String s) {
+        int count = 0;
+        HashMap<Character, Integer> hm = new HashMap<>();
+        for(Character ch : s.toCharArray()){
+            if(hm.containsKey(ch)){
+                hm.put(ch, hm.get(ch)+1);
+            }else{
+                hm.put(ch, 1);
+            }
+        }
+        for (Character ch : hm.keySet()){
+            if(hm.get(ch) % 2 != 0){
+                count++;
+                if( count > 1) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean canMakePalindromeSecond(String word) {
         // don't waste time on words that are already a palindrome.
         if (word.length() < 2) return true;
 
@@ -55,12 +77,12 @@ public class Main {
      * Example 1: raycecar => true
      * Example 2: abxa => true
      */
-    public static boolean canMakePalindromeAlmost(String word) {
+    public static boolean canMakePalindrome(String word) {
         // don't waste time on words that are already a palindrome.
         if (word.length() < 2) return true;
 
-        int numOddOccurrences = 0;
         Dictionary<String, Integer> dictionary = new Hashtable<>();
+
         // count occurrences of each letter in the string
         for (int i = 0; i < word.length(); i++) {
             String key = word.substring(i, i + 1);
@@ -72,27 +94,17 @@ public class Main {
         }
 
         // now check each letter/count key/value pair to see which ones have an odd count.
-        // Remove the first one found.
-        boolean haveRemovedOneOdd = false;
+        int numOddOccurrences = 0;
         Enumeration<String> keys = dictionary.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             int count = dictionary.get(key);
-            if (count == 1 && !haveRemovedOneOdd) {
-                haveRemovedOneOdd = true;
-                dictionary.remove(key);
+            if (count % 2 == 1) {
+                numOddOccurrences++;
             }
         }
 
-        // make another pass through the dictionary to see if there one or zero remaining odd count key/value pairs.
-        keys = dictionary.keys();
-        while (keys.hasMoreElements()) {
-            String key = keys.nextElement();
-            int count = dictionary.get(key);
-            if (count % 2 == 1) numOddOccurrences++;
-        }
-
-        return numOddOccurrences  <= 1;
+        return (numOddOccurrences - 1) % 2 == 1;
     }
 
 

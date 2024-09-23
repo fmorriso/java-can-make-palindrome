@@ -20,14 +20,32 @@ public class UnitTests {
     }
 
     @Test
-    @DisplayName("lsevels should be true")
-    public void canCheck_lsevels() {
-        assertTrue(Main.canMakePalindrome("lsevels"));
+    @DisplayName("levels should be true")
+    public void canCheck_levels() {
+        assertTrue(Main.canMakePalindrome("levels"));
     }
 
     @Test
-    @DisplayName( "rotrator should be true")
-    public void canCheck_rotrator() {
+    @DisplayName( "protator should be true")
+    public void canCheck_protator() {
+        assertTrue(Main.canMakePalindrome("protator"));
+    }
+
+    @Test
+    @DisplayName("raycecar should be true")
+    public void canCheck_raycecar(){
+        assertTrue(Main.canMakePalindrome("raycecar"));
+    }
+
+    @Test
+    @DisplayName("kayazk should true")
+    public void canCheck_kayazk() {
+        assertTrue(Main.canMakePalindrome("kayazk"));
+    }
+
+    @Test
+    @DisplayName("rotrator should be true")
+    public void canCheck_rotrator(){
         assertTrue(Main.canMakePalindrome("rotrator"));
     }
 
