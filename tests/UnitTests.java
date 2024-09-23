@@ -8,6 +8,36 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UnitTests {
 
     @Test
+    @DisplayName("madam should be true")
+    public void canCheck_madam() {
+        assertTrue(Main.canMakePalindrome("madam"));
+    }
+
+    @Test
+    @DisplayName("racecar should be true")
+    public void canCheck_racecar() {
+        assertTrue(Main.canMakePalindrome("racecar"));
+    }
+
+    @Test
+    @DisplayName("abba should be true")
+    public void canCheck_abba() {
+        assertTrue(Main.canMakePalindrome("abba"));
+    }
+
+    @Test
+    @DisplayName("doggod should be true")
+    public void canCheck_doggod() {
+        assertTrue(Main.canMakePalindrome("doggod"));
+    }
+
+    @Test
+    @DisplayName("x should be true")
+    public void canCheck_x() {
+        assertTrue(Main.canMakePalindrome("x"));
+    }
+
+    @Test
     @DisplayName("abxa should be true")
     public void canCheck_abxa() {
         assertTrue(Main.canMakePalindrome("abxa"));
@@ -26,14 +56,14 @@ public class UnitTests {
     }
 
     @Test
-    @DisplayName( "protator should be true")
+    @DisplayName("protator should be true")
     public void canCheck_protator() {
         assertTrue(Main.canMakePalindrome("protator"));
     }
 
     @Test
     @DisplayName("raycecar should be true")
-    public void canCheck_raycecar(){
+    public void canCheck_raycecar() {
         assertTrue(Main.canMakePalindrome("raycecar"));
     }
 
@@ -46,20 +76,15 @@ public class UnitTests {
     @Test
     @DisplayName("rotrator minus middle r should be true")
     // rotrator - middle 'r' => rot a tor
-    public void canCheck_rotrator(){
+    public void canCheck_rotrator() {
         assertTrue(Main.canMakePalindrome("rotrator"));
     }
 
     @Test
     @DisplayName("xxy should be true")
-    public void canCheck_xxy(){
+    public void canCheck_xxy() {
         assertTrue(Main.canMakePalindrome("xxy"));
     }
 
-    @Test
-    @DisplayName("abba should be true")
-    public void canCheck_abba(){
-        assertTrue(Main.canMakePalindrome("abba"));
-    }
 
 }

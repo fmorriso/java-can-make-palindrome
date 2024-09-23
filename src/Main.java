@@ -93,41 +93,42 @@ public class Main {
             }
         }
 
-        String keyWithLowestOddCount = "";
-        int lowestOddCount = Integer.MAX_VALUE;
+        String keyWithHighestOddCount = "";
+        int highestOddCount = Integer.MIN_VALUE;
         Enumeration<String> keys = dictionary.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             int count = dictionary.get(key);
-            if(count % 2== 1 && count < lowestOddCount){
-                lowestOddCount = count;
-                keyWithLowestOddCount = key;
+            if(count % 2 == 1 && count > highestOddCount){
+                highestOddCount = count;
+                keyWithHighestOddCount = key;
             }
-
         }
 
         // POSSIBLE FIX: find the highest odd count, such as 3 in drpepper (the 'p' count)
-        // and, if that is removed, is the next highest odd count == 1?  If so, then return true
+        // and, if that count is reduced by one, if there is only 1 remaining letter with an odd count,
+        // then the word can be made into a palindrone.
         keys = dictionary.keys();
-        if(!keyWithLowestOddCount.isEmpty()){
-            // remove that key/count from the dictionary
-            // now check how many odd counts are left
-            // if there is only one remaining odd count, then return true; otherwise, return false
-            dictionary.remove(keyWithLowestOddCount);
+        if(!keyWithHighestOddCount.isEmpty()){
+            int count = dictionary.get(keyWithHighestOddCount);
+            count--;
+            dictionary.put(keyWithHighestOddCount, count);
         }
 
         // make a final pass through the dictionary.
-        // if there are any odd count keys > 1, then return false; otherwise return true
+        // if there are only even count key/count pairs left, then the word can be make into a palindrone.
         int numOddOccurrences = 0;
+        boolean onlyEvenCounts = true;
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             int count = dictionary.get(key);
             if (count > 1 && count % 2 == 1) {
-                return false;
+                onlyEvenCounts = false;
+                break;
             }
         }
 
-        return true;
+        return onlyEvenCounts;
     }
 
 
