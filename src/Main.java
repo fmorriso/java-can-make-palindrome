@@ -8,17 +8,7 @@ public class Main {
         System.out.format("Java version: %s%n", getJavaVersion());
         System.out.format("JUnit version: %s%n", getJUnitVersion());
 
-        String word;
-        boolean isPalindrome;
-
-        word = "abxa"; // should be true
-        isPalindrome = canMakePalindrome(word);
-        System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
-
-        word = "drpepper"; // should be false
-        isPalindrome = canMakePalindrome(word);
-        System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
-
+/*
         word = "lsevels"; // should be true
         isPalindrome = canMakePalindrome(word);
         System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
@@ -26,6 +16,32 @@ public class Main {
         word = "rotrator"; // should be true
         isPalindrome = canMakePalindrome(word);
         System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
+
+ */
+    }
+
+    public static boolean canMakePalindrome(String word) {
+        // don't waste time on words that are already a palindrome.
+        if (word.length() < 2) return true;
+
+        Dictionary<String, Integer> dictionary = new Hashtable<>();
+        int numOddChars = 0;
+
+        // scan each individual character in the word
+        for (int i = 0; i < word.length(); i++) {
+            String key = word.substring(i, i + 1);
+
+            if (dictionary.get(key) == null) dictionary.put(key, 1);
+            else {
+                int count = dictionary.get(key) + 1;
+                dictionary.put(key, count);
+            }
+
+            if (dictionary.get(key) % 2 == 0) numOddChars--;
+            else numOddChars++;
+        }
+
+        return numOddChars < 2;
     }
 
     /**
@@ -39,7 +55,7 @@ public class Main {
      * Example 1: raycecar => true
      * Example 2: abxa => true
      */
-    public static boolean canMakePalindrome(String word) {
+    public static boolean canMakePalindromeAlmost(String word) {
         // don't waste time on words that are already a palindrome.
         if (word.length() < 2) return true;
 
