@@ -11,7 +11,7 @@ The empty string and all one-character strings are also palindromes by our defin
 If a string that is already a palindrome is passed, you should return true,
 such as the call of canMakePalindrome("racecar"). You should also return true if the string would be a palindrome after the removal of a single character, such as "raycecar" (remove the 'y') or "abxa" (remove the 'x').
 ## References
-* [Can Make Palindrome](https://codestepbystep.com/problem/view/java/strings/CaesarCipher)
+* [Can Make Palindrome](https://codestepbystep.com/r/problem/view/java/strings/canMakePalindrome)
 * [add JUnit 5 to existing IntelliJ project](https://www.jetbrains.com/help/idea/junit.html#intellij)
 ## Tools Used
 
