@@ -44,9 +44,22 @@ public class UnitTests {
     }
 
     @Test
-    @DisplayName("rotrator should be true")
+    @DisplayName("rotrator minus middle r should be true")
+    // rotrator - middle 'r' => rot a tor
     public void canCheck_rotrator(){
         assertTrue(Main.canMakePalindrome("rotrator"));
+    }
+
+    @Test
+    @DisplayName("xxy should be true")
+    public void canCheck_xxy(){
+        assertTrue(Main.canMakePalindrome("xxy"));
+    }
+
+    @Test
+    @DisplayName("abba should be true")
+    public void canCheck_abba(){
+        assertTrue(Main.canMakePalindrome("abba"));
     }
 
 }

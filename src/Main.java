@@ -93,18 +93,41 @@ public class Main {
             }
         }
 
-        // now check each letter/count key/value pair to see which ones have an odd count.
-        int numOddOccurrences = 0;
+        String keyWithLowestOddCount = "";
+        int lowestOddCount = Integer.MAX_VALUE;
         Enumeration<String> keys = dictionary.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             int count = dictionary.get(key);
-            if (count % 2 == 1) {
-                numOddOccurrences++;
+            if(count % 2== 1 && count < lowestOddCount){
+                lowestOddCount = count;
+                keyWithLowestOddCount = key;
+            }
+
+        }
+
+        // POSSIBLE FIX: find the highest odd count, such as 3 in drpepper (the 'p' count)
+        // and, if that is removed, is the next highest odd count == 1?  If so, then return true
+        keys = dictionary.keys();
+        if(!keyWithLowestOddCount.isEmpty()){
+            // remove that key/count from the dictionary
+            // now check how many odd counts are left
+            // if there is only one remaining odd count, then return true; otherwise, return false
+            dictionary.remove(keyWithLowestOddCount);
+        }
+
+        // make a final pass through the dictionary.
+        // if there are any odd count keys > 1, then return false; otherwise return true
+        int numOddOccurrences = 0;
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            int count = dictionary.get(key);
+            if (count > 1 && count % 2 == 1) {
+                return false;
             }
         }
 
-        return (numOddOccurrences - 1) % 2 == 1;
+        return true;
     }
 
 
