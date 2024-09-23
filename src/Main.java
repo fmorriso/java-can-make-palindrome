@@ -81,6 +81,13 @@ public class Main {
         // don't waste time on words that are already a palindrome.
         if (word.length() < 2) return true;
 
+        // reverse the word and see if it looks the same
+        StringBuilder reversed = new StringBuilder(word.length());
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed.append(word.charAt(i));
+        }
+        if (reversed.toString().equals(word)) return true;
+
         Dictionary<String, Integer> dictionary = new Hashtable<>();
 
         // count occurrences of each letter in the string
@@ -93,17 +100,32 @@ public class Main {
             }
         }
 
+        int totalKeysWithOddCount = 0;
+        int totalKeysWithEvenCount = 0;
+        int totalKeysWithJustOne = 0;
         String keyWithHighestOddCount = "";
         int highestOddCount = Integer.MIN_VALUE;
         Enumeration<String> keys = dictionary.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             int count = dictionary.get(key);
-            if(count % 2 == 1 && count > highestOddCount){
-                highestOddCount = count;
-                keyWithHighestOddCount = key;
+            if(count == 1) totalKeysWithJustOne++;
+            if(count % 2 == 1) {
+                totalKeysWithOddCount++;
+                if (count > highestOddCount) {
+                    highestOddCount = count;
+                    keyWithHighestOddCount = key;
+                }
+            } else {
+                totalKeysWithEvenCount++;
             }
         }
+
+        if(totalKeysWithOddCount == totalKeysWithJustOne) return false;
+        if(totalKeysWithEvenCount > totalKeysWithOddCount) return true;
+
+        // if none of the keys has an odd count, then we should be able to form a palindrone.
+        if (totalKeysWithOddCount ==0) return true;
 
         // POSSIBLE FIX: find the highest odd count, such as 3 in drpepper (the 'p' count)
         // and, if that count is reduced by one, if there is only 1 remaining letter with an odd count,
