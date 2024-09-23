@@ -56,7 +56,7 @@ public class Main {
         }
 
         // now check each letter/count key/value pair to see which ones have an odd count.
-        //
+        // Remove the first one found.
         boolean haveRemovedOneOdd = false;
         Enumeration<String> keys = dictionary.keys();
         while (keys.hasMoreElements()) {
@@ -68,7 +68,7 @@ public class Main {
             }
         }
 
-        // make another pass through the dictonary to see if there is only one remaining odd count key/value pair
+        // make another pass through the dictionary to see if there one or zero remaining odd count key/value pairs.
         keys = dictionary.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
@@ -76,7 +76,7 @@ public class Main {
             if (count % 2 == 1) numOddOccurrences++;
         }
 
-        return numOddOccurrences  == 1;
+        return numOddOccurrences  <= 1;
     }
 
 
