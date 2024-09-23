@@ -19,6 +19,13 @@ public class Main {
         isPalindrome = canMakePalindrome(word);
         System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
 
+        word = "lsevels"; // should be true
+        isPalindrome = canMakePalindrome(word);
+        System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
+
+        word = "rotrator"; // should be true
+        isPalindrome = canMakePalindrome(word);
+        System.out.format("word: %s, canMakePalindrome: %b%n", word, isPalindrome);
     }
 
     /**
@@ -49,14 +56,27 @@ public class Main {
         }
 
         // now check each letter/count key/value pair to see which ones have an odd count.
+        //
+        boolean haveRemovedOneOdd = false;
         Enumeration<String> keys = dictionary.keys();
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            int count = dictionary.get(key);
+            if (count == 1 && !haveRemovedOneOdd) {
+                haveRemovedOneOdd = true;
+                dictionary.remove(key);
+            }
+        }
+
+        // make another pass through the dictonary to see if there is only one remaining odd count key/value pair
+        keys = dictionary.keys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             int count = dictionary.get(key);
             if (count % 2 == 1) numOddOccurrences++;
         }
 
-        return numOddOccurrences  <= 2;
+        return numOddOccurrences  == 1;
     }
 
 
