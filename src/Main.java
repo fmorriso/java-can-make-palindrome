@@ -108,11 +108,13 @@ public class Main {
         // POSSIBLE FIX: find the highest odd count, such as 3 in drpepper (the 'p' count)
         // and, if that count is reduced by one, if there is only 1 remaining letter with an odd count,
         // then the word can be made into a palindrone.
-        keys = dictionary.keys();
-        if(!keyWithHighestOddCount.isEmpty()){
-            int count = dictionary.get(keyWithHighestOddCount);
-            count--;
-            dictionary.put(keyWithHighestOddCount, count);
+        if (highestOddCount > 1) {
+            keys = dictionary.keys();
+            if(!keyWithHighestOddCount.isEmpty()){
+                int count = dictionary.get(keyWithHighestOddCount);
+                count--;
+                dictionary.put(keyWithHighestOddCount, count);
+            }
         }
 
         // make a final pass through the dictionary.

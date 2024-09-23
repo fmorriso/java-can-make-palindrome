@@ -77,22 +77,22 @@ public class UnitTests {
 
 
     @Test
-    @DisplayName("pretend should be true")
+    @DisplayName("pretend should be false")
     public void canCheck_pretend() {
-        Assertions.assertTrue(Main.canMakePalindrome("pretend"));
+        Assertions.assertFalse(Main.canMakePalindrome("pretend"));
     }
 
 
     @Test
-    @DisplayName("racecor should be true")
+    @DisplayName("racecor should be false")
     public void canCheck_racecor() {
-        Assertions.assertTrue(Main.canMakePalindrome("racecor"));
+        Assertions.assertFalse(Main.canMakePalindrome("racecor"));
     }
 
     @Test
-    @DisplayName("pacecar should be true")
+    @DisplayName("pacecar should be false")
     public void canCheck_pacecar() {
-        Assertions.assertTrue(Main.canMakePalindrome("pacecar"));
+        Assertions.assertFalse(Main.canMakePalindrome("pacecar"));
     }
 
 
@@ -103,15 +103,15 @@ public class UnitTests {
     }
 
     @Test
-    @DisplayName("krayzak should be true")
+    @DisplayName("krayzak should be false")
     public void canCheck_krayzak() {
-        Assertions.assertTrue(Main.canMakePalindrome("krayzak"));
+        Assertions.assertFalse(Main.canMakePalindrome("krayzak"));
     }
 
     @Test
-    @DisplayName("lslevels should be true")
+    @DisplayName("lslevels should be false")
     public void canCheck_lslevels() {
-        Assertions.assertTrue(Main.canMakePalindrome("lslevels"));
+        Assertions.assertFalse(Main.canMakePalindrome("lslevels"));
     }
 
     @Test
@@ -151,7 +151,5 @@ public class UnitTests {
     public void canCheck_empty_string() {
         Assertions.assertTrue(Main.canMakePalindrome(""));
     }
-
-
 
 }
