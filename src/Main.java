@@ -1,5 +1,4 @@
 import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 
@@ -14,7 +13,7 @@ public class Main {
     public static boolean canMakePalindromeStillDoesNotWork(String s) {
         int numDeletions = 0;
         for (int i = 0; i < s.length() / 2; i++) {
-            if(s.charAt(i) != s.charAt(s.length() - i - 1)) {
+            if (s.charAt(i) != s.charAt(s.length() - i - 1)) {
                 numDeletions++;
             }
         }
@@ -24,17 +23,17 @@ public class Main {
     public static boolean canMakePalindromeDoesNotWork(String s) {
         int count = 0;
         HashMap<Character, Integer> hm = new HashMap<>();
-        for(Character ch : s.toCharArray()){
-            if(hm.containsKey(ch)){
-                hm.put(ch, hm.get(ch)+1);
-            }else{
+        for (Character ch : s.toCharArray()) {
+            if (hm.containsKey(ch)) {
+                hm.put(ch, hm.get(ch) + 1);
+            } else {
                 hm.put(ch, 1);
             }
         }
-        for (Character ch : hm.keySet()){
-            if(hm.get(ch) % 2 != 0){
+        for (Character ch : hm.keySet()) {
+            if (hm.get(ch) % 2 != 0) {
                 count++;
-                if( count > 1) {
+                if (count > 1) {
                     return false;
                 }
             }
@@ -42,117 +41,85 @@ public class Main {
         return true;
     }
 
-    public static boolean canMakePalindromeSecond(String word) {
-        // don't waste time on words that are already a palindrome.
-        if (word.length() < 2) return true;
 
-        Dictionary<String, Integer> dictionary = new Hashtable<>();
-        int numOddChars = 0;
 
-        // scan each individual character in the word
-        for (int i = 0; i < word.length(); i++) {
-            String key = word.substring(i, i + 1);
-
-            if (dictionary.get(key) == null) dictionary.put(key, 1);
-            else {
-                int count = dictionary.get(key) + 1;
-                dictionary.put(key, count);
-            }
-
-            if (dictionary.get(key) % 2 == 0) numOddChars--;
-            else numOddChars++;
+    // Utility method to check if
+    // substring from low to high is
+    // palindrome or not.
+    public static boolean isPalindrome(String str,
+                                int low, int high)
+    {
+        while (low < high)
+        {
+            if (str.charAt(low) != str.charAt(high))
+                return false;
+            low++;
+            high--;
         }
-
-        return numOddChars < 2;
+        return true;
     }
 
     /**
      * Determines if the specified string can be made into a palindrome by removing at most
      * one character.
-     * @param word
+     *
+     * @param str
      * @return true if the word can be made into a palindrome; otherwise, returns false.
      * @implNote We use a dictionary to count characters.  If only one character has a odd number of occurrences,
      * we know we can remove that character and still make the remaining characters into a palindrome.
-     *
+     * <p>
      * Example 1: raycecar => true
      * Example 2: abxa => true
      */
-    public static boolean canMakePalindrome(String word) {
+    public static boolean canMakePalindrome(String str) {
         // don't waste time on words that are already a palindrome.
-        if (word.length() < 2) return true;
+        if ( str.length() < 2 ) return true;
 
-        // reverse the word and see if it looks the same
-        StringBuilder reversed = new StringBuilder(word.length());
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed.append(word.charAt(i));
-        }
-        if (reversed.toString().equals(word)) return true;
+        // Initialize low and right
+        // by both the ends of the string
+        int low = 0, high = str.length() - 1;
 
-        Dictionary<String, Integer> dictionary = new Hashtable<>();
+        // loop until low and
+        // high cross each other
+        while (low < high)
+        {
 
-        // count occurrences of each letter in the string
-        for (int i = 0; i < word.length(); i++) {
-            String key = word.substring(i, i + 1);
-            if (dictionary.get(key) == null) dictionary.put(key, 1);
-            else {
-                int count = dictionary.get(key) + 1;
-                dictionary.put(key, count);
+            // If both characters are equal then
+            // move both pointer towards end
+            if (str.charAt(low) == str.charAt(high))
+            {
+                low++;
+                high--;
+            }
+            else
+            {
+
+                /*
+                 * If removing str[low] makes the
+                 * whole string palindrome. We basically
+                 * check if substring str[low+1..high]
+                 * is palindrome or not.
+                 */
+                if (isPalindrome(str, low + 1, high))
+                    return true;
+
+                /*
+                 * If removing str[high] makes the whole string
+                 * palindrome. We basically check if substring
+                 * str[low+1..high] is palindrome or not.
+                 */
+                if (isPalindrome(str, low, high - 1))
+                    return true;
+
+                return false;
             }
         }
 
-        int totalKeysWithOddCount = 0;
-        int totalKeysWithEvenCount = 0;
-        int totalKeysWithJustOne = 0;
-        String keyWithHighestOddCount = "";
-        int highestOddCount = Integer.MIN_VALUE;
-        Enumeration<String> keys = dictionary.keys();
-        while (keys.hasMoreElements()) {
-            String key = keys.nextElement();
-            int count = dictionary.get(key);
-            if(count == 1) totalKeysWithJustOne++;
-            if(count % 2 == 1) {
-                totalKeysWithOddCount++;
-                if (count > highestOddCount) {
-                    highestOddCount = count;
-                    keyWithHighestOddCount = key;
-                }
-            } else {
-                totalKeysWithEvenCount++;
-            }
-        }
+        // We reach here when complete string
+        // will be palindrome if complete string
+        // is palindrome then return mid character
+        return true;
 
-        if(totalKeysWithOddCount == totalKeysWithJustOne) return false;
-        if(totalKeysWithEvenCount > totalKeysWithOddCount) return true;
-
-        // if none of the keys has an odd count, then we should be able to form a palindrone.
-        if (totalKeysWithOddCount ==0) return true;
-
-        // POSSIBLE FIX: find the highest odd count, such as 3 in drpepper (the 'p' count)
-        // and, if that count is reduced by one, if there is only 1 remaining letter with an odd count,
-        // then the word can be made into a palindrone.
-        if (highestOddCount > 1) {
-            keys = dictionary.keys();
-            if(!keyWithHighestOddCount.isEmpty()){
-                int count = dictionary.get(keyWithHighestOddCount);
-                count--;
-                dictionary.put(keyWithHighestOddCount, count);
-            }
-        }
-
-        // make a final pass through the dictionary.
-        // if there are only even count key/count pairs left, then the word can be make into a palindrone.
-        int numOddOccurrences = 0;
-        boolean onlyEvenCounts = true;
-        while (keys.hasMoreElements()) {
-            String key = keys.nextElement();
-            int count = dictionary.get(key);
-            if (count > 1 && count % 2 == 1) {
-                onlyEvenCounts = false;
-                break;
-            }
-        }
-
-        return onlyEvenCounts;
     }
 
 
@@ -174,4 +141,5 @@ public class Main {
     private static String getJUnitVersion() {
         return org.junit.jupiter.api.Test.class.getPackage().getImplementationVersion();
     }
+
 }
