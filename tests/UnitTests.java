@@ -107,8 +107,8 @@ public class UnitTests {
 
     @Test
     @DisplayName("lslevels should be false")
-    public void canCheck_lslevels() {
-        Assertions.assertFalse(Main.canMakePalindrome("lslevels"));
+    public void canCheck_lsevels() {
+        Assertions.assertFalse(Main.canMakePalindrome("lsevels"));
     }
 
     @Test

@@ -17,15 +17,17 @@ such as the call of canMakePalindrome("racecar"). You should also return true if
 
 | Tool     |  Version |
 |:---------|---------:|
-| Java     | 22.0.2.0 |
+| Java     | 23.0.0.0 |
 | JUnit    |   5.11.0 |
 | IntelliJ | 2024.2.1 |
 
 ## Change History
 
-| Date       | Description                                                                       |
-|:-----------|:----------------------------------------------------------------------------------|
-| 2024-09-22 | Initial creation                                                                  |
+| Date       | Description      |
+|:-----------|:-----------------|
+| 2024-09-22 | Initial creation |
+| 2024-09-25 | Working solution |
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.

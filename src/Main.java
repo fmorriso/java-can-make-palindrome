@@ -93,20 +93,16 @@ public class Main {
             }
             else
             {
-
                 /*
-                 * If removing str[low] makes the
-                 * whole string palindrome. We basically
-                 * check if substring str[low+1..high]
-                 * is palindrome or not.
+                 * If removing str[low] makes the whole string palindrome.
+                 * We basically check if substring str[low+1..high] is a palindrome or not.
                  */
                 if (isPalindrome(str, low + 1, high))
                     return true;
 
                 /*
-                 * If removing str[high] makes the whole string
-                 * palindrome. We basically check if substring
-                 * str[low+1..high] is palindrome or not.
+                 * If removing str[high] makes the whole string a palindrome.
+                 * We basically check if substring str[low+1..high] is palindrome or not.
                  */
                 if (isPalindrome(str, low, high - 1))
                     return true;
@@ -115,9 +111,7 @@ public class Main {
             }
         }
 
-        // We reach here when complete string
-        // will be palindrome if complete string
-        // is palindrome then return mid character
+        // We reach here when the complete string will be palindrome.
         return true;
 
     }
