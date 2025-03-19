@@ -1,6 +1,4 @@
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Hashtable;
 
 public class Main {
 
@@ -63,7 +61,7 @@ public class Main {
      * Determines if the specified string can be made into a palindrome by removing at most
      * one character.
      *
-     * @param str
+     * @param str - the word that might be capable of becoming a palindrome.
      * @return true if the word can be made into a palindrome; otherwise, returns false.
      * @implNote We use a dictionary to count characters.  If only one character has a odd number of occurrences,
      * we know we can remove that character and still make the remaining characters into a palindrome.
