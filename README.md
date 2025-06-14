@@ -22,9 +22,9 @@ the removal of a single character, such as "raycecar" (remove the 'y') or "abxa"
 
 | Tool     |  Version |
 |:---------|---------:|
-| Java     | 24.0.0.0 |
-| JUnit    |   5.11.0 |
-| IntelliJ | 2024.3.5 |
+| Java     | 24.0.1.0 |
+| JUnit    |   5.13.1 |
+| IntelliJ | 2025.1.2 |
 
 ## Change History
 
@@ -33,4 +33,5 @@ the removal of a single character, such as "raycecar" (remove the 'y') or "abxa"
 | 2024-09-22 | Initial creation             |
 | 2024-09-25 | Working solution             |
 | 2025-03-19 | Switch from GitLab to GitHub |
+| 2025-06-13 | upgrade to JUnit 5.13.1      |
 
