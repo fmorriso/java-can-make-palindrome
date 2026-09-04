@@ -22,16 +22,17 @@ the removal of a single character, such as "raycecar" (remove the 'y') or "abxa"
 
 | Tool     |  Version |
 |:---------|---------:|
-| Java     | 24.0.1.0 |
-| JUnit    |   5.13.1 |
-| IntelliJ | 2025.1.2 |
+| Java     | 26.0.2.1 |
+| JUnit    |   5.14.4 |
+| IntelliJ | 2026.2.2 |
 
 ## Change History
 
-| Date       | Description                  |
-|:-----------|:-----------------------------|
-| 2024-09-22 | Initial creation             |
-| 2024-09-25 | Working solution             |
-| 2025-03-19 | Switch from GitLab to GitHub |
-| 2025-06-13 | upgrade to JUnit 5.13.1      |
+| Date       | Description                         |
+|:-----------|:------------------------------------|
+| 2024-09-22 | Initial creation                    |
+| 2024-09-25 | Working solution                    |
+| 2025-03-19 | Switch from GitLab to GitHub        |
+| 2025-06-13 | upgrade to JUnit 5.13.1             |
+| 2026-09-04 | upgrade to java 26 and JUnit 5.14.4 |
 
